@@ -1,6 +1,7 @@
 const User = require('./models/Users');
 
 const userCrud = {
+    /* Add a new user to db */
     addUser: (cid) => {
         return new Promise((resolve, reject) => {
             User.findOne({ cid: cid }).then(user => {
@@ -17,6 +18,7 @@ const userCrud = {
             })
         })
     },
+    /* Find user */
     findUser: cid => {
         return new Promise((resolve, reject) => {
             User.findOne({ cid: cid }).then(user => {
@@ -24,6 +26,7 @@ const userCrud = {
             })
         })
     },
+    /* Update user gender to db */
     updateUserGender: (cid, gender) => {
         return new Promise((resolve, reject) => {
             User.updateOne({ "cid": cid }, {$set: { "gender": gender }}).then(user => {
@@ -32,6 +35,7 @@ const userCrud = {
             })
         })
     },
+    /* Delete user record from db */
     deleteUserRecord: cid => {
         return new Promise((resolve, reject) => {
             User.deleteOne({ cid: cid }).then(user => {
