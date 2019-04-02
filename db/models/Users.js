@@ -8,5 +8,5 @@ const userSchema = new Schema({
     age: String
 });
 
-const User = mongoose.model('user', userSchema);
+const User = mongoose.model('ivruser', userSchema);
 module.exports = User;

@@ -4,10 +4,10 @@ const userCrud = {
     addUser: (cid) => {
         return new Promise((resolve, reject) => {
             User.findOne({ cid: cid }).then(user => {
-                console.log('find',user)
+                // console.log('find',user)
                 if(!user) {
                     new User({ cid: cid }).save().then(user => {
-                        console.log('user saved');
+                        // console.log('user saved');
                         resolve();
                     })
                 }
@@ -27,7 +27,7 @@ const userCrud = {
     updateUserGender: (cid, gender) => {
         return new Promise((resolve, reject) => {
             User.updateOne({ "cid": cid }, {$set: { "gender": gender }}).then(user => {
-                console.log('updated gender',user);
+                // console.log('updated gender',user);
                 resolve();
             })
         })
@@ -35,19 +35,11 @@ const userCrud = {
     deleteUserRecord: cid => {
         return new Promise((resolve, reject) => {
             User.deleteOne({ cid: cid }).then(user => {
-                console.log('deleted user', user);
+                // console.log('deleted user', user);
                 resolve();
             })
         })
     }
-    // updateUserAge: (cid, age) => {
-    //     return new Promise((resolve, reject) => {
-    //         User.updateOne({ cid: cid}, {$set: { age: age }}).then(user => {
-    //             console.log('updated age',user);
-    //             resolve(user);
-    //         });
-    //     })
-    // }
 };
 
 module.exports = userCrud;
