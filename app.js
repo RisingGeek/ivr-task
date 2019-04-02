@@ -4,6 +4,8 @@ const PORT = process.env.PORT || 5000;
 require('dotenv').config();
 const userCrud = require('./db/userCrud');
 
+console.log(process.env.MONGODB_URI)
+
 app.get('/', (req, res) => {
 
     /* Gender Response (First Question) */
@@ -108,6 +110,10 @@ app.get('/', (req, res) => {
         userCrud.deleteUserRecord(req.query.cid).then(() => {
             res.send(`<response><hangup /></response>`)
         })
+    }
+    else {
+        res.set('Content-Type', 'text/html')
+        res.send('<h1>main page test</h1>')
     }
 })
 
